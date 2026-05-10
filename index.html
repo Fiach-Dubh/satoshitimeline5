@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Satoshi Nakamoto Quote Timeline</title>
+  <meta name="description" content="A static, GitHub Pages-ready timeline of Satoshi Nakamoto quotes extracted from Kicking the Hornet's Nest and organized by source." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#timelineList">Skip to timeline</a>
+  <header class="hero">
+    <div class="hero__grid"></div>
+    <div class="hero__inner">
+      <p class="eyebrow">Static archive timeline</p>
+      <h1>Satoshi Nakamoto Quote Timeline</h1>
+      <p class="lead">A searchable, Time.Graphics-inspired presentation of Satoshi's writings, emails, and forum posts, extracted into one chronological story.</p>
+      <div class="stats" id="stats"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="controls" aria-label="Timeline controls">
+      <div class="search-wrap">
+        <label for="search">Search quotes</label>
+        <input id="search" type="search" placeholder="Try “proof-of-work”, “privacy”, “WikiLeaks”, “Genesis”…" autocomplete="off" />
+      </div>
+      <div class="filter-wrap">
+        <span class="filter-title">Sources</span>
+        <div id="filters" class="filters"></div>
+      </div>
+      <div class="range-wrap">
+        <label for="yearRange">Through year <span id="yearLabel"></span></label>
+        <input id="yearRange" type="range" min="2008" max="2014" value="2014" step="1" />
+      </div>
+    </section>
+
+    <section class="timeline-graphic" aria-label="Interactive timeline graphic">
+      <div class="graphic-topline">
+        <h2>Timeline map</h2>
+        <div class="graphic-actions">
+          <span class="zoom-readout" aria-live="polite">Zoom <b id="zoomLabel">1×</b></span>
+          <button id="zoomOut" type="button" aria-label="Zoom timeline out">−</button>
+          <button id="zoomIn" type="button" aria-label="Zoom timeline in">+</button>
+          <button id="resetView" type="button">Reset view</button>
+          <button id="exportJson" type="button">Download JSON</button>
+        </div>
+      </div>
+      <p class="timeline-hint">Ctrl/⌘ + scroll over the map to zoom around the cursor — now up to 10000×. Deep zoom switches into day/hour/minute tick marks so multiple quote instances from the same day can spread apart in one view. Use +/− as a static-page fallback.</p>
+      <div id="axis" class="axis" role="img" aria-label="A zoomable horizontal timeline showing the placement of events from 2008 to 2014."></div>
+    </section>
+
+    <section class="results-head">
+      <div>
+        <h2>Chronological cards</h2>
+        <p id="resultCount">Loading…</p>
+      </div>
+      <div class="sort-note">Click any card to read the full extracted text.</div>
+    </section>
+
+    <ol id="timelineList" class="timeline-list"></ol>
+  </main>
+
+  <dialog id="quoteDialog" class="quote-dialog">
+    <form method="dialog">
+      <button class="dialog-close" aria-label="Close">×</button>
+    </form>
+    <div id="dialogBody"></div>
+  </dialog>
+
+  <footer class="site-footer">
+    <p>Built as a dependency-free static site. Data source: attached <em>Kicking the Hornet's Nest</em> PDF extraction, cross-referenced with the Nakamoto Archive GitHub project notes.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
